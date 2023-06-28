@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onclick 연습</title>
+  </head>
+  <body>
+    <button onclick="sayHello()">안녕</button>
+    <button onclick="showAlert()">경고</button>
+    <!-- 요소 보이고,가리기 -->
+    <button onclick="showElement()">보이고</button>
+    <button onclick="hideElement()">가리기</button>
+    <div id="myElement" style="display: none">
+        이 요소를 보이기/가리기 합니다.
+      </div>
+    <!-- 토글이용 -->
+    <button onclick="toggleVisivility()">보이기/가리기</button>
+    <div id="mytoggle">이 요소의 가시성을 토글합니다.</div>
+    <!-- 이미지 불러오기 -->
+    <button onclick="showimage()">이미지 보이고</button>
+    <button onclick="hideimage()">이미지 가리고</button>
+    <!-- 토글써서 이미지 보이고 가리기  -->
+    <img src="images/다운로드.jpg" alt="규니" id="showimg" style="display: none">
+    <button onclick="toggleVisivilityimg()">이미지 보이기/가리기</button>
+    <img src="images/균2.jpg" alt="균이" id="showimg2">
+    <!-- 변경이미지 -->
+    <button onclick="changeImg()">이미지변경</button>
+    <img src="images/1.jpg" alt="1" id="myImage">
+    <!-- 글자속성변경 -->
+     <button onclick="toggleStyle()">스타일변경</button>
+     <p id="myText"> 창균아 컴백축하한다!! </p>
+     <!-- 버튼글자변경 -->
+     <button onclick="changeButton()" id="myButton">버튼바뀌기전</button>
+
+    <script>
+      function sayHello() {
+        console.log("안녕하세요!");
+      }
+      function showAlert() {
+        alert("주의:이것은 경고입니다!");
+      }
+    //   요소 보이고 가리기 (const = 변하지않는값)
+      function showElement() {
+        const element = document.getElementById("myElement");
+        element.style.display = "block";
+      }
+      function hideElement() {
+        const element = document.getElementById("myElement");
+        element.style.display = "none";
+      }
+    //   토글
+    function toggleVisivility() {
+    const element = document.getElementById("mytoggle");
+       element.style.display =(element.style.display ==="none") ? "block" : "none";
+    // 조건 연상자일때 조건 ? 조건이 true 일때 : 조건이  false일때
+    }
+    //   이미지 불러오기
+      function showimage() {
+        const image = document.getElementById("showimg");
+        image.style.display = "block";
+      }
+      function hideimage() {
+        const image = document.getElementById("showimg");
+        image.style.display = "none";
+      }
+    //   토글로 이미지 보이고/가리기
+    // function toggleVisivilityimg() {
+    //     const image = document.getElementById("showimg2");
+    //     image.style.display = (element.style.display ==="block") ? "none" : "block";
+    // }
+// 다른방법
+function toggleVisivilityimg() {
+    const image = document.getElementById("showimg2");
+    if (image.style.display === "none") {
+        image.style.display ="block";
+    } else { 
+        image.style.display ="none";
+    }
+}
+// 변경이미지 코드 
+let isImageToggled = false;
+function changeImg() {
+    var image = document.getElementById("myImage");
+    if(isImageToggled){
+        image.src = "images/1.jpg";
+        image.alt = "기존이미지";
+        isImageToggled = false;
+    }
+    else{
+        image.src = "images/2.jpg";
+        image.alt = "다른이미지";
+        isImageToggled = true;
+    }
+    
+}
+
+// 텍스트 스타일변경 코드
+let isStyleToggled = false;
+    function toggleStyle() {
+        var text = document.getElementById("myText");
+        if(isStyleToggled) {
+            text.style.color = "";
+            text.style.fontSize ="";
+            text.style.fontWeight="";
+            isStyleToggled = false;
+        }
+        else {
+            text.style.color = "BlueViolet";
+            text.style.fontSize ="28px";
+            text.style.fontWeight="400";
+            isStyleToggled = true;
+        }
+    }
+
+// 버튼글자변경
+let isButtonToggled = false;
+function changeButton() {
+    var button = document.getElementById("myButton");
+    if(isButtonToggled) {
+        button.innerText ="버튼바뀌기전";
+        button.style.backgroundColor = "";
+        isButtonToggled = false;
+    }
+    else {
+        button.innerText = "버튼 바뀐거";
+        button.style.backgroundColor = "BlueViolet";
+        isButtonToggled = true;
+    }
+}
+
+    </script>
+  </body> 
+</html> 
